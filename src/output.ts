@@ -82,7 +82,8 @@ function renderCsv(data: any, opts: RenderOptions): void {
   for (const row of rows) {
     console.log(columns.map(c => {
       const v = String(row[c] ?? '');
-      return v.includes(',') || v.includes('"') ? `"${v.replace(/"/g, '""')}"` : v;
+      return v.includes(',') || v.includes('"') || v.includes('\n')
+        ? `"${v.replace(/"/g, '""')}"` : v;
     }).join(','));
   }
 }

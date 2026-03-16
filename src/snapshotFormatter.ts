@@ -119,9 +119,7 @@ function parseLine(trimmed: string): { role: string; text: string; hasText: bool
 function stripAnnotations(content: string): string {
   // Unwrap outer single quotes first
   let line = content;
-  let hadOuterQuotes = false;
   if (line.startsWith("'") && (line.endsWith("':") || line.endsWith("'"))) {
-    hadOuterQuotes = true;
     if (line.endsWith("':")) {
       line = line.slice(1, -2) + ':';
     } else {

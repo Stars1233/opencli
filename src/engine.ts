@@ -101,7 +101,10 @@ async function discoverClisFromFs(dir: string): Promise<void> {
       const filePath = path.join(siteDir, file);
       if (file.endsWith('.yaml') || file.endsWith('.yml')) {
         registerYamlCli(filePath, site);
-      } else if (file.endsWith('.js') && !file.endsWith('.d.js')) {
+      } else if (
+        (file.endsWith('.js') && !file.endsWith('.d.js')) ||
+        (file.endsWith('.ts') && !file.endsWith('.d.ts') && !file.endsWith('.test.ts'))
+      ) {
         promises.push(
           import(`file://${filePath}`).catch((err: any) => {
             process.stderr.write(`Warning: failed to load module ${filePath}: ${err.message}\n`);

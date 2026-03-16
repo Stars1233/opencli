@@ -13,9 +13,7 @@ import { formatSnapshot } from './snapshotFormatter.js';
 import { PKG_VERSION } from './version.js';
 import { normalizeEvaluateSource } from './pipeline/template.js';
 import { generateInterceptorJs, generateReadInterceptedJs } from './interceptor.js';
-import { withTimeoutMs } from './runtime.js';
-
-const CONNECT_TIMEOUT = parseInt(process.env.OPENCLI_BROWSER_CONNECT_TIMEOUT ?? '30', 10);
+import { withTimeoutMs, DEFAULT_BROWSER_CONNECT_TIMEOUT } from './runtime.js';
 const STDERR_BUFFER_LIMIT = 16 * 1024;
 const INITIAL_TABS_TIMEOUT_MS = 1500;
 const TAB_CLEANUP_TIMEOUT_MS = 2000;
@@ -344,7 +342,7 @@ export class PlaywrightMCP {
     PlaywrightMCP._registerGlobalCleanup();
     PlaywrightMCP._activeInsts.add(this);
     this._state = 'connecting';
-    const timeout = opts.timeout ?? CONNECT_TIMEOUT;
+    const timeout = opts.timeout ?? DEFAULT_BROWSER_CONNECT_TIMEOUT;
 
     return new Promise<Page>((resolve, reject) => {
       const isDebug = process.env.DEBUG?.includes('opencli:mcp');

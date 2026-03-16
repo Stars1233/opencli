@@ -3,3 +3,4 @@ dist/
 *.tsbuildinfo
 .opencli/
 .mcp.json
+*.log

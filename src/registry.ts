@@ -42,18 +42,11 @@ export interface InternalCliCommand extends CliCommand {
   _lazy?: boolean;
   _modulePath?: string;
 }
-export interface CliOptions {
+export interface CliOptions extends Partial<Omit<CliCommand, 'args' | 'description'>> {
   site: string;
   name: string;
   description?: string;
-  domain?: string;
-  strategy?: Strategy;
-  browser?: boolean;
   args?: Arg[];
-  columns?: string[];
-  func?: (page: IPage, kwargs: Record<string, any>, debug?: boolean) => Promise<any>;
-  pipeline?: any[];
-  timeoutSeconds?: number;
 }
 const _registry = new Map<string, CliCommand>();
 

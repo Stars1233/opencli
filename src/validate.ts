@@ -11,8 +11,22 @@ const KNOWN_STEP_NAMES = new Set([
   'intercept', 'tap',
 ]);
 
-export function validateClisWithTarget(dirs: string[], target?: string): any {
-  const results: any[] = [];
+export interface FileValidationResult {
+  path: string;
+  errors: string[];
+  warnings: string[];
+}
+
+export interface ValidationReport {
+  ok: boolean;
+  results: FileValidationResult[];
+  errors: number;
+  warnings: number;
+  files: number;
+}
+
+export function validateClisWithTarget(dirs: string[], target?: string): ValidationReport {
+  const results: FileValidationResult[] = [];
   let errors = 0; let warnings = 0; let files = 0;
   for (const dir of dirs) {
     if (!fs.existsSync(dir)) continue;
@@ -35,7 +49,7 @@ export function validateClisWithTarget(dirs: string[], target?: string): any {
   return { ok: errors === 0, results, errors, warnings, files };
 }
 
-function validateYamlFile(filePath: string): any {
+function validateYamlFile(filePath: string): FileValidationResult {
   const errors: string[] = []; const warnings: string[] = [];
   try {
     const raw = fs.readFileSync(filePath, 'utf-8');
@@ -64,7 +78,7 @@ function validateYamlFile(filePath: string): any {
   return { path: filePath, errors, warnings };
 }
 
-export function renderValidationReport(report: any): string {
+export function renderValidationReport(report: ValidationReport): string {
   const lines = [`opencli validate: ${report.ok ? 'PASS' : 'FAIL'}`, `Checked ${report.results.length} CLI(s) in ${report.files} file(s)`, `Errors: ${report.errors}  Warnings: ${report.warnings}`];
   for (const r of report.results) {
     if (r.errors.length > 0 || r.warnings.length > 0) {
@@ -75,3 +89,4 @@ export function renderValidationReport(report: any): string {
   }
   return lines.join('\n');
 }
+

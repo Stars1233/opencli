@@ -62,10 +62,18 @@ program.command('list').description('List all available CLI commands').option('-
   });
 
 program.command('validate').description('Validate CLI definitions').argument('[target]', 'site or site/name')
-  .action(async (target) => { const { validateClisWithTarget, renderValidationReport } = await import('./validate.js'); console.log(renderValidationReport(validateClisWithTarget([BUILTIN_CLIS, USER_CLIS], target))); });
+  .action(async (target) => {
+    const { validateClisWithTarget, renderValidationReport } = await import('./validate.js');
+    console.log(renderValidationReport(validateClisWithTarget([BUILTIN_CLIS, USER_CLIS], target)));
+  });
 
 program.command('verify').description('Validate + smoke test').argument('[target]').option('--smoke', 'Run smoke tests', false)
-  .action(async (target, opts) => { const { verifyClis, renderVerifyReport } = await import('./verify.js'); const r = await verifyClis({ builtinClis: BUILTIN_CLIS, userClis: USER_CLIS, target, smoke: opts.smoke }); console.log(renderVerifyReport(r)); process.exitCode = r.ok ? 0 : 1; });
+  .action(async (target, opts) => {
+    const { verifyClis, renderVerifyReport } = await import('./verify.js');
+    const r = await verifyClis({ builtinClis: BUILTIN_CLIS, userClis: USER_CLIS, target, smoke: opts.smoke });
+    console.log(renderVerifyReport(r));
+    process.exitCode = r.ok ? 0 : 1;
+  });
 
 program.command('explore').alias('probe').description('Explore a website: discover APIs, stores, and recommend strategies').argument('<url>').option('--site <name>').option('--goal <text>').option('--wait <s>', '', '3').option('--auto', 'Enable interactive fuzzing (simulate clicks to trigger lazy APIs)').option('--click <labels>', 'Comma-separated labels to click before fuzzing (e.g. "字幕,CC,评论")')
   .action(async (url, opts) => { const { exploreUrl, renderExploreSummary } = await import('./explore.js'); const clickLabels = opts.click ? opts.click.split(',').map((s: string) => s.trim()) : undefined; console.log(renderExploreSummary(await exploreUrl(url, { BrowserFactory: PlaywrightMCP, site: opts.site, goal: opts.goal, waitSeconds: parseFloat(opts.wait), auto: opts.auto, clickLabels }))); });
