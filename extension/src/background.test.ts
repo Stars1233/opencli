@@ -867,7 +867,7 @@ describe('background tab isolation', () => {
     expect(chrome.windows.create).toHaveBeenCalledTimes(1);
   });
 
-  it('marks a newly created owned automation window with an OpenCLI Automation tab group', async () => {
+  it('marks a newly created owned automation window with an OpenCLI Adapter tab group', async () => {
     const { chrome, tabs, groups } = createChromeMock();
     vi.stubGlobal('chrome', chrome);
 
@@ -880,7 +880,7 @@ describe('background tab isolation', () => {
       expect.objectContaining({
         id: 100,
         windowId: 1,
-        title: 'OpenCLI Automation',
+        title: 'OpenCLI Adapter',
         color: 'orange',
         collapsed: false,
       }),
@@ -918,7 +918,7 @@ describe('background tab isolation', () => {
     expect(chrome.windows.create).toHaveBeenNthCalledWith(2, expect.objectContaining({ focused: false }));
     expect(groups).toEqual(expect.arrayContaining([
       expect.objectContaining({ windowId: 20, title: 'OpenCLI Browser' }),
-      expect.objectContaining({ windowId: 21, title: 'OpenCLI Automation' }),
+      expect.objectContaining({ windowId: 21, title: 'OpenCLI Adapter' }),
     ]));
   });
 
@@ -955,7 +955,7 @@ describe('background tab isolation', () => {
     expect(chrome.windows.create).toHaveBeenCalledWith(expect.objectContaining({ focused: true }));
   });
 
-  it('reuses the existing automation tab group when adding another owned lease tab', async () => {
+  it('reuses the existing adapter tab group when adding another owned lease tab', async () => {
     const { chrome, tabs, groups } = createChromeMock();
     vi.stubGlobal('chrome', chrome);
 
@@ -969,12 +969,12 @@ describe('background tab isolation', () => {
     expect(chrome.tabs.group).toHaveBeenCalledWith({ groupId: 100, tabIds: [10] });
   });
 
-  it('discovers and reuses an existing OpenCLI Automation group after service worker restart', async () => {
+  it('discovers and reuses an existing OpenCLI Adapter group after service worker restart', async () => {
     const { chrome, tabs, groups } = createChromeMock();
     groups.push({
       id: 99,
       windowId: 1,
-      title: 'OpenCLI Automation',
+      title: 'OpenCLI Adapter',
       color: 'orange',
       collapsed: true,
     });
@@ -1042,7 +1042,7 @@ describe('background tab isolation', () => {
     groups.push({
       id: 99,
       windowId: 1,
-      title: 'OpenCLI Automation',
+      title: 'OpenCLI Adapter',
       color: 'orange',
       collapsed: true,
     });

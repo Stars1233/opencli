@@ -199,7 +199,7 @@ const REGISTRY_KEY = 'opencli_target_lease_registry_v2';
 const LEASE_IDLE_ALARM_PREFIX = 'opencli:lease-idle:';
 const CONTAINER_TAB_GROUP_TITLE: Record<OwnedWindowRole, string> = {
   interactive: 'OpenCLI Browser',
-  automation: 'OpenCLI Automation',
+  automation: 'OpenCLI Adapter',
 };
 const AUTOMATION_TAB_GROUP_COLOR: chrome.tabGroups.ColorEnum = 'orange';
 let leaseMutationQueue: Promise<void> = Promise.resolve();
