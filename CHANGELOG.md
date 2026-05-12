@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### ⚠ BREAKING CHANGES
+
+* **browser** — replace the `--session <name>` flag with a `<session>` positional argument that immediately follows `browser`. `opencli browser work click 12` instead of `opencli browser --session work click 12`; `opencli browser work bind` instead of `opencli browser bind --session work`. Required-flag semantics are now encoded structurally as a positional, matching the Docker/git convention for required operation-target identifiers. The internal `--session` flag is preserved for the daemon protocol and for direct `program.parseAsync` callers but is no longer part of the user-facing surface.
+
 ## [1.7.18](https://github.com/jackwener/opencli/compare/v1.7.17...v1.7.18) (2026-05-12)
 
 Hotfix release for the 1.7.17 doctor regression: `opencli doctor` failed connectivity probe with `Browser session is required` because the doctor probe didn't pass a session to the new strict-session browser bridge. Also adds new adapters and adapter fixes that were ready immediately after 1.7.17.

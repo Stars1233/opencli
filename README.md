@@ -152,7 +152,7 @@ The agent handles all the `opencli browser` commands internally — you just des
 
 Available browser commands include `open`, `state`, `click`, `type`, `fill`, `select`, `keys`, `wait`, `get`, `find`, `extract`, `frames`, `screenshot`, `scroll`, `back`, `eval`, `network`, `tab list`, `tab new`, `tab select`, `tab close`, `init`, `verify`, and `close`.
 
-`opencli browser` commands require `--session <name>`. `opencli browser --session work open <url>` and `opencli browser --session work tab new [url]` both return a target ID. Use `opencli browser --session work tab list` to inspect target IDs, then pass `--tab <targetId>` to route a command to a specific tab. `tab new` creates a new tab without changing the default browser target; only `tab select <targetId>` promotes that tab to the default target for later untargeted commands in the same session.
+`opencli browser` commands require a `<session>` positional immediately after `browser`. `opencli browser work open <url>` and `opencli browser work tab new [url]` both return a target ID. Use `opencli browser work tab list` to inspect target IDs, then pass `--tab <targetId>` to route a command to a specific tab. `tab new` creates a new tab without changing the default browser target; only `tab select <targetId>` promotes that tab to the default target for later untargeted commands in the same session.
 
 ## Core Concepts
 
@@ -160,7 +160,7 @@ Available browser commands include `open`, `state`, `click`, `type`, `fill`, `se
 
 `opencli browser` commands are the low-level primitives that AI Agents use to operate websites. You don't run these manually — instead, install the `opencli-adapter-author` skill into your AI agent, describe what you want in natural language, and the agent handles the browser operations.
 
-For example, tell your agent: *"Help me check my Xiaohongshu notifications"* — the agent will use `opencli browser --session <name> open`, `state`, `click`, etc. under the hood.
+For example, tell your agent: *"Help me check my Xiaohongshu notifications"* — the agent will use `opencli browser <session> open`, `state`, `click`, etc. under the hood.
 
 ### Built-in adapters: stable commands
 
@@ -174,7 +174,7 @@ When the site you need is not yet covered, use the `opencli-adapter-author` skil
 2. Discover the right endpoint — network inspection, initial state, bundle search, token trace, or interceptor fallback.
 3. Decide the auth strategy — `PUBLIC` / `COOKIE` / `INTERCEPT` / `UI` / `LOCAL`.
 4. Decode response fields and design output columns.
-5. `opencli browser --session recon analyze <url>` for one-shot recon, then `opencli browser --session recon init <site>/<name>` → write adapter → `opencli browser --session recon verify <site>/<name>`.
+5. `opencli browser recon analyze <url>` for one-shot recon, then `opencli browser recon init <site>/<name>` → write adapter → `opencli browser recon verify <site>/<name>`.
 6. Persist site knowledge to `~/.opencli/sites/<site>/` so the next adapter for the same site is faster.
 
 ### CLI Hub and desktop adapters
@@ -207,7 +207,7 @@ OpenCLI is not only for websites. It can also:
 | `OPENCLI_VERBOSE` | `false` | Enable verbose logging (`-v` flag also works) |
 | `DEBUG_SNAPSHOT` | — | Set to `1` for DOM snapshot debug output |
 
-`opencli browser *` requires an explicit `--session <name>`, uses a foreground browser window by default, and keeps that session's tab lease until `browser --session <name> close` or idle cleanup. Browser-backed adapters use a background adapter window and release one-shot tab leases by default. Interactive adapters can declare `siteSession: 'persistent'` to keep a stable site tab for continuity; pass `--site-session ephemeral` for a one-shot tab.
+`opencli browser *` requires an explicit `<session>` positional, uses a foreground browser window by default, and keeps that session's tab lease until `opencli browser <session> close` or idle cleanup. Browser-backed adapters use a background adapter window and release one-shot tab leases by default. Interactive adapters can declare `siteSession: 'persistent'` to keep a stable site tab for continuity; pass `--site-session ephemeral` for a one-shot tab.
 
 ## Update
 
@@ -411,10 +411,10 @@ See [Plugins Guide](./docs/guide/plugins.md) for creating your own plugin.
 Before writing any adapter code, read the [`opencli-adapter-author` skill](./skills/opencli-adapter-author/SKILL.md). It takes you end-to-end:
 
 - Recon the site and pick a pattern (SPA / SSR / JSONP / Token / Streaming).
-- Discover the right endpoint via `opencli browser --session <name> network`, `eval`, or the interceptor fallback.
+- Discover the right endpoint via `opencli browser <session> network`, `eval`, or the interceptor fallback.
 - Decide auth strategy (`PUBLIC` / `COOKIE` / `INTERCEPT` / `UI` / `LOCAL`).
-- Run `opencli browser --session recon analyze <url>` for one-shot recon, decode response fields, design columns, scaffold with `opencli browser --session recon init`.
-- Verify with `opencli browser --session recon verify <site>/<name>` before shipping.
+- Run `opencli browser recon analyze <url>` for one-shot recon, decode response fields, design columns, scaffold with `opencli browser recon init`.
+- Verify with `opencli browser recon verify <site>/<name>` before shipping.
 
 For long-lived personal commands that should live in your own Git repo, use a local plugin instead; see [Extending OpenCLI](./docs/guide/extending-opencli.md). Quick private adapters can still live at `~/.opencli/clis/<site>/<name>.js`. Site knowledge (endpoints, field maps, fixtures) accumulates in `~/.opencli/sites/<site>/` so the next adapter for the same site starts from context instead of zero.
 
