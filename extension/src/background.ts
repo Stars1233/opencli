@@ -235,6 +235,7 @@ const CONTAINER_TAB_GROUP_TITLE: Record<OwnedWindowRole, string> = {
   interactive: 'OpenCLI Browser',
   automation: 'OpenCLI Adapter',
 };
+const LEGACY_AUTOMATION_TAB_GROUP_TITLE = 'OpenCLI';
 const AUTOMATION_TAB_GROUP_COLOR: chrome.tabGroups.ColorEnum = 'orange';
 let leaseMutationQueue: Promise<void> = Promise.resolve();
 const ownedContainers: Record<OwnedWindowRole, {
@@ -522,11 +523,87 @@ async function getOwnedContainerGroupId(role: OwnedWindowRole, windowId: number)
     container.groupId = null;
   }
 
-  const groups = await chrome.tabGroups.query({ windowId, title: CONTAINER_TAB_GROUP_TITLE[role] });
-  const existing = groups[0];
-  if (!existing) return null;
-  container.groupId = existing.id;
-  return existing.id;
+  for (const title of getOwnedContainerGroupTitles(role)) {
+    const groups = await chrome.tabGroups.query({ windowId, title });
+    const existing = groups[0];
+    if (existing) {
+      container.groupId = existing.id;
+      return existing.id;
+    }
+  }
+  return null;
+}
+
+function getOwnedContainerGroupTitles(role: OwnedWindowRole): string[] {
+  return role === 'automation'
+    ? [CONTAINER_TAB_GROUP_TITLE.automation, LEGACY_AUTOMATION_TAB_GROUP_TITLE]
+    : [CONTAINER_TAB_GROUP_TITLE.interactive];
+}
+
+type OwnedContainerDiscoveryCandidate = {
+  windowId: number;
+  groupId: number;
+  focused: boolean;
+  hasReusableTab: boolean;
+};
+
+async function focusOwnedWindowIfRequested(windowId: number, mode: WindowMode): Promise<void> {
+  if (mode !== 'foreground') return;
+  const updateWindow = (chrome.windows as unknown as { update?: (windowId: number, updateInfo: { focused?: boolean }) => Promise<unknown> }).update;
+  if (typeof updateWindow === 'function') await updateWindow(windowId, { focused: true }).catch(() => {});
+}
+
+async function toOwnedContainerDiscoveryCandidate(group: chrome.tabGroups.TabGroup): Promise<OwnedContainerDiscoveryCandidate | null> {
+  try {
+    const chromeWindow = await chrome.windows.get(group.windowId);
+    const reusableTabId = await findReusableOwnedContainerTab(group.windowId);
+    return {
+      windowId: group.windowId,
+      groupId: group.id,
+      focused: !!chromeWindow.focused,
+      hasReusableTab: reusableTabId !== undefined,
+    };
+  } catch {
+    // Ignore stale browser-session group/window state and keep looking.
+    return null;
+  }
+}
+
+function selectOwnedContainerDiscoveryCandidate(candidates: OwnedContainerDiscoveryCandidate[]): OwnedContainerDiscoveryCandidate | null {
+  if (candidates.length === 0) return null;
+  return [...candidates].sort((a, b) => {
+    if (a.focused !== b.focused) return a.focused ? -1 : 1;
+    if (a.hasReusableTab !== b.hasReusableTab) return a.hasReusableTab ? -1 : 1;
+    return a.groupId - b.groupId;
+  })[0];
+}
+
+async function discoverOwnedContainerFromTabGroup(role: OwnedWindowRole): Promise<{ windowId: number; groupId: number } | null> {
+  const container = ownedContainers[role];
+  if (container.groupId !== null) {
+    try {
+      const group = await chrome.tabGroups.get(container.groupId);
+      await chrome.windows.get(group.windowId);
+      container.windowId = group.windowId;
+      return { windowId: group.windowId, groupId: group.id };
+    } catch {
+      container.windowId = null;
+      container.groupId = null;
+    }
+  }
+
+  for (const title of getOwnedContainerGroupTitles(role)) {
+    const groups = await chrome.tabGroups.query({ title });
+    const candidates = (await Promise.all(groups.map(toOwnedContainerDiscoveryCandidate)))
+      .filter((candidate): candidate is OwnedContainerDiscoveryCandidate => candidate !== null);
+    const selected = selectOwnedContainerDiscoveryCandidate(candidates);
+    if (!selected) continue;
+    container.windowId = selected.windowId;
+    container.groupId = selected.groupId;
+    return { windowId: selected.windowId, groupId: selected.groupId };
+  }
+
+  return null;
 }
 
 async function ensureOwnedContainerTabGroup(role: OwnedWindowRole, windowId: number, tabIds: Array<number | undefined>): Promise<void> {
@@ -591,10 +668,7 @@ async function ensureOwnedContainerWindowUnlocked(
   if (container.windowId !== null) {
     try {
       await chrome.windows.get(container.windowId);
-      if (mode === 'foreground') {
-        const updateWindow = (chrome.windows as unknown as { update?: (windowId: number, updateInfo: { focused?: boolean }) => Promise<unknown> }).update;
-        if (typeof updateWindow === 'function') await updateWindow(container.windowId, { focused: true }).catch(() => {});
-      }
+      await focusOwnedWindowIfRequested(container.windowId, mode);
       const initialTabId = await findReusableOwnedContainerTab(container.windowId);
       await ensureOwnedContainerTabGroup(role, container.windowId, [initialTabId]);
       return {
@@ -605,6 +679,18 @@ async function ensureOwnedContainerWindowUnlocked(
       container.windowId = null;
       container.groupId = null;
     }
+  }
+
+  const discovered = await discoverOwnedContainerFromTabGroup(role);
+  if (discovered) {
+    await focusOwnedWindowIfRequested(discovered.windowId, mode);
+    const initialTabId = await findReusableOwnedContainerTab(discovered.windowId);
+    await ensureOwnedContainerTabGroup(role, discovered.windowId, [initialTabId]);
+    await persistRuntimeState();
+    return {
+      windowId: discovered.windowId,
+      initialTabId,
+    };
   }
 
   const startUrl = (initialUrl && isSafeNavigationUrl(initialUrl)) ? initialUrl : BLANK_PAGE;
