@@ -1,4 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import yaml from 'js-yaml';
 
 const { mockExecFileSync, mockPlatform } = vi.hoisted(() => ({
   mockExecFileSync: vi.fn(),
@@ -19,6 +23,8 @@ vi.mock('node:os', async () => {
 });
 
 import { installExternalCli, parseCommand, type ExternalCliConfig } from './external.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 describe('parseCommand', () => {
   it('splits binaries and quoted arguments without invoking a shell', () => {
@@ -41,6 +47,17 @@ describe('parseCommand', () => {
     expect(() => parseCommand('brew install gh\nrm -rf /')).toThrow(
       'Install command contains unsafe shell operators',
     );
+  });
+
+  it('keeps built-in install commands compatible with the shell-free parser', () => {
+    const raw = fs.readFileSync(path.join(__dirname, 'external-clis.yaml'), 'utf8');
+    const entries = (yaml.load(raw) || []) as ExternalCliConfig[];
+
+    for (const entry of entries) {
+      for (const command of Object.values(entry.install ?? {})) {
+        if (command) expect(() => parseCommand(command)).not.toThrow();
+      }
+    }
   });
 });
 
