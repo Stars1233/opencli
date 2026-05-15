@@ -1,11 +1,18 @@
 # Changelog
 
-## Unreleased
+## [1.7.22](https://github.com/jackwener/opencli/compare/v1.7.21...v1.7.22) (2026-05-15)
+
+External CLI ergonomics + two adapter envelope/auth fixes. New `longbridge` external CLI entry; `opencli list` / root help now render human-readable brand labels for executables whose bare name is ambiguous.
 
 ### Features
 
-* **external** — add the Longbridge CLI as a built-in external CLI passthrough (`opencli longbridge ...`) for Longbridge OpenAPI market data, account, and trading commands.
-* **external-cli** — render brand alias `name(package)` in `opencli list` and root help when the bare executable name is ambiguous. Built-in entries `ntn` → `ntn(notion)`, `dws` → `dws(DingTalk Workspace)`, `wecom-cli` → `wecom-cli(企业微信)` now self-explain in help output. `package` field is repurposed to cover both upstream distribution names (e.g. `tg-cli`) and human-readable brand labels (e.g. `notion`, `企业微信`).
+* **external** — add the Longbridge CLI as a built-in external CLI passthrough (`opencli longbridge ...`) for Longbridge OpenAPI market data, account, and trading commands. ([#1584](https://github.com/jackwener/opencli/issues/1584))
+* **external-cli** — render brand alias `name(package)` in `opencli list` and root help when the bare executable name is ambiguous. Built-in entries `ntn` → `ntn(notion)`, `dws` → `dws(DingTalk Workspace)`, `wecom-cli` → `wecom-cli(企业微信)` now self-explain in help output. `package` field is repurposed to cover both upstream distribution names (e.g. `tg-cli`) and human-readable brand labels (e.g. `notion`, `企业微信`). ([#1585](https://github.com/jackwener/opencli/issues/1585))
+
+### Bug Fixes
+
+* **boss** — map `code=24` (identity mismatch) to `AuthRequiredError` so re-login is signaled instead of surfacing as a generic API error. ([#1573](https://github.com/jackwener/opencli/issues/1573))
+* **weibo** — unwrap Browser Bridge `page.evaluate` envelopes in read adapters. ([#1568](https://github.com/jackwener/opencli/issues/1568))
 
 ## [1.7.21](https://github.com/jackwener/opencli/compare/v1.7.20...v1.7.21) (2026-05-14)
 
