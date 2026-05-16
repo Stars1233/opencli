@@ -19,14 +19,11 @@ OpenCLI 可以用同一套 CLI 做三类事情：
 
 ## 亮点
 
-- **桌面应用控制** — 通过 CDP 直接在终端驱动 Electron 应用（Cursor、Codex、ChatGPT 等）。
-- **AI Agent 浏览器自动化** — 安装 `opencli-adapter-author` skill，你的 AI Agent 就能操作任意网站：导航、点击、输入/填充、提取、截图——全部通过你的已登录 Chrome 会话完成。
-- **网站 → CLI** — 把任何网站变成确定性 CLI：100+ 站点能力已注册，或用 `opencli-adapter-author` skill + `opencli browser verify` 自己写。
-- **账号安全** — 复用 Chrome/Chromium 登录态，凭证永远不会离开浏览器。
-- **面向 AI Agent** — 一个 skill 带你走完站点侦察、API 发现、字段解码、适配器编写、验证的全流程。
-- **CLI 枢纽** — 统一发现、自动安装、纯透传任何外部 CLI（gh、docker、obsidian、tg、discord、wx 等）。
-- **零 LLM 成本** — 运行时不消耗模型 token，跑 10,000 次也不花一分钱。
-- **确定性输出** — 相同命令，相同输出结构，每次一致。可管道、可脚本、CI 友好。
+- **登录态浏览器自动化** — 让 AI Agent 驱动你的已登录 Chrome：导航、填表单、点击、提取。凭证永远不离开浏览器。
+- **桌面应用控制** — 通过 CDP 直接驱动 Electron 应用（Cursor、Codex、ChatGPT）。
+- **多 Profile 浏览器桥接** — 通过 `--profile` 或 `OPENCLI_PROFILE` 把命令路由到指定 Chrome profile。
+- **100+ 适配器 + CLI 枢纽** — 内置站点命令（B站 / 小红书 / Twitter / HackerNews / ...）加外部 CLI 透传（`gh`、`docker`、`ntn`、`longbridge`）。
+- **零 LLM 运行成本** — 确定性输出，运行时不消耗 token。
 
 ## 快速开始
 

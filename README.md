@@ -19,15 +19,11 @@ It also works as a **CLI hub** for local tools such as `gh`, `docker`, `longbrid
 
 ## Highlights
 
-- **Desktop App Control** — Drive Electron apps (Cursor, Codex, ChatGPT, etc.) directly from the terminal via CDP.
-- **Browser Automation for AI Agents** — Install the `opencli-adapter-author` skill, and your AI agent can operate any website: navigate, click, type/fill, extract, screenshot — all through your logged-in Chrome session.
-- **Multi-profile Browser Bridge** — Install the extension in each Chrome profile you want to use, then route commands with `--profile`, `OPENCLI_PROFILE`, or `opencli profile use`.
-- **Website → CLI** — Turn any website into a deterministic CLI: 100+ site surfaces are already registered, or write your own with the `opencli-adapter-author` skill + `opencli browser verify`.
-- **Account-safe** — Reuses Chrome/Chromium logged-in state; your credentials never leave the browser.
-- **AI Agent ready** — One skill takes you from site recon through API discovery, field decoding, adapter writing, and verification.
-- **CLI Hub** — Discover, auto-install, and passthrough commands to any external CLI (gh, docker, obsidian, tg, discord, wx, etc).
-- **Zero LLM cost** — No tokens consumed at runtime. Run 10,000 times and pay nothing.
-- **Deterministic** — Same command, same output schema, every time. Pipeable, scriptable, CI-friendly.
+- **Live Browser Automation** — Drive your logged-in Chrome from AI agents: navigate, fill forms, click, extract. Credentials stay in the browser.
+- **Desktop App Control** — Drive Electron apps (Cursor, Codex, ChatGPT) directly via CDP.
+- **Multi-profile Browser Bridge** — Route commands to specific Chrome profiles via `--profile` or `OPENCLI_PROFILE`.
+- **100+ adapters + CLI Hub** — Built-in site commands (bilibili / xiaohongshu / twitter / hackernews / ...) plus external CLI passthrough (`gh`, `docker`, `ntn`, `longbridge`).
+- **Zero LLM cost at runtime** — Deterministic output, no tokens consumed.
 
 ---
 
