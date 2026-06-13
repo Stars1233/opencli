@@ -343,7 +343,8 @@
     "type": "js",
     "modulePath": "12306/auth.js",
     "sourceFile": "12306/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "1688",
@@ -557,7 +558,8 @@
     "type": "js",
     "modulePath": "1688/auth.js",
     "sourceFile": "1688/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "1point3acres",
@@ -943,7 +945,8 @@
     "type": "js",
     "modulePath": "1point3acres/auth.js",
     "sourceFile": "1point3acres/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "36kr",
@@ -1645,7 +1648,8 @@
     "type": "js",
     "modulePath": "amazon/auth.js",
     "sourceFile": "amazon/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "antigravity",
@@ -2998,7 +3002,8 @@
     "type": "js",
     "modulePath": "band/auth.js",
     "sourceFile": "band/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "barchart",
@@ -5701,7 +5706,8 @@
     "type": "js",
     "modulePath": "boss/auth.js",
     "sourceFile": "boss/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "brave",
@@ -5906,7 +5912,8 @@
     "type": "js",
     "modulePath": "chaoxing/auth.js",
     "sourceFile": "chaoxing/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "chatgpt",
@@ -6309,7 +6316,8 @@
     "type": "js",
     "modulePath": "chatgpt/auth.js",
     "sourceFile": "chatgpt/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "chatgpt-app",
@@ -7098,7 +7106,8 @@
     "type": "js",
     "modulePath": "claude/auth.js",
     "sourceFile": "claude/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "cnki",
@@ -8349,7 +8358,8 @@
     "type": "js",
     "modulePath": "coupang/auth.js",
     "sourceFile": "coupang/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "crates",
@@ -8681,7 +8691,8 @@
     "type": "js",
     "modulePath": "ctrip/auth.js",
     "sourceFile": "ctrip/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "cursor",
@@ -9380,7 +9391,8 @@
     "type": "js",
     "modulePath": "deepseek/auth.js",
     "sourceFile": "deepseek/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "defillama",
@@ -9768,7 +9780,8 @@
     "type": "js",
     "modulePath": "dianping/auth.js",
     "sourceFile": "dianping/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "dictionary",
@@ -10539,7 +10552,8 @@
     "type": "js",
     "modulePath": "douban/auth.js",
     "sourceFile": "douban/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "doubao",
@@ -10835,7 +10849,8 @@
     "type": "js",
     "modulePath": "doubao/auth.js",
     "sourceFile": "doubao/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "doubao-app",
@@ -12729,7 +12744,8 @@
     "type": "js",
     "modulePath": "facebook/auth.js",
     "sourceFile": "facebook/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "flathub",
@@ -12901,7 +12917,8 @@
     "type": "js",
     "modulePath": "flomo/auth.js",
     "sourceFile": "flomo/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "gemini",
@@ -13263,7 +13280,8 @@
     "type": "js",
     "modulePath": "gemini/auth.js",
     "sourceFile": "gemini/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "geogebra",
@@ -13675,7 +13693,8 @@
     "type": "js",
     "modulePath": "gitee/auth.js",
     "sourceFile": "gitee/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "github",
@@ -14721,7 +14740,8 @@
     "type": "js",
     "modulePath": "grok/auth.js",
     "sourceFile": "grok/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "hackernews",
@@ -15312,7 +15332,8 @@
     "type": "js",
     "modulePath": "hf/auth.js",
     "sourceFile": "hf/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "homebrew",
@@ -15844,7 +15865,8 @@
     "type": "js",
     "modulePath": "hupu/auth.js",
     "sourceFile": "hupu/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "imdb",
@@ -16892,7 +16914,8 @@
     "type": "js",
     "modulePath": "instagram/auth.js",
     "sourceFile": "instagram/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "jd",
@@ -17141,7 +17164,8 @@
     "type": "js",
     "modulePath": "jd/auth.js",
     "sourceFile": "jd/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "jianyu",
@@ -17274,7 +17298,8 @@
     "type": "js",
     "modulePath": "jianyu/auth.js",
     "sourceFile": "jianyu/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "jike",
@@ -17646,7 +17671,8 @@
     "type": "js",
     "modulePath": "jike/auth.js",
     "sourceFile": "jike/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "jimeng",
@@ -17786,7 +17812,8 @@
     "type": "js",
     "modulePath": "jimeng/auth.js",
     "sourceFile": "jimeng/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "jimeng",
@@ -18127,7 +18154,8 @@
     "type": "js",
     "modulePath": "ke/auth.js",
     "sourceFile": "ke/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "ke",
@@ -19196,7 +19224,8 @@
     "type": "js",
     "modulePath": "kimi/auth.js",
     "sourceFile": "kimi/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "lesswrong",
@@ -20684,7 +20713,8 @@
     "type": "js",
     "modulePath": "linkedin/auth.js",
     "sourceFile": "linkedin/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "linkedin-learning",
@@ -20843,7 +20873,8 @@
     "type": "js",
     "modulePath": "linkedin-learning/auth.js",
     "sourceFile": "linkedin-learning/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "linux-do",
@@ -21227,7 +21258,8 @@
     "type": "js",
     "modulePath": "linux-do/auth.js",
     "sourceFile": "linux-do/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "lobsters",
@@ -21634,7 +21666,8 @@
     "type": "js",
     "modulePath": "maimai/auth.js",
     "sourceFile": "maimai/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "manus",
@@ -21837,7 +21870,8 @@
     "type": "js",
     "modulePath": "manus/auth.js",
     "sourceFile": "manus/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "maven",
@@ -22878,7 +22912,8 @@
     "type": "js",
     "modulePath": "notebooklm/auth.js",
     "sourceFile": "notebooklm/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "notebooklm",
@@ -23484,7 +23519,8 @@
     "type": "js",
     "modulePath": "nowcoder/auth.js",
     "sourceFile": "nowcoder/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "npm",
@@ -25097,7 +25133,8 @@
     "type": "js",
     "modulePath": "pixiv/auth.js",
     "sourceFile": "pixiv/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "powerchina",
@@ -25184,7 +25221,8 @@
     "type": "js",
     "modulePath": "powerchina/auth.js",
     "sourceFile": "powerchina/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "producthunt",
@@ -26700,7 +26738,8 @@
     "type": "js",
     "modulePath": "quark/auth.js",
     "sourceFile": "quark/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "qwen",
@@ -27049,7 +27088,8 @@
     "type": "js",
     "modulePath": "qwen/auth.js",
     "sourceFile": "qwen/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "reddit",
@@ -28127,7 +28167,8 @@
     "type": "js",
     "modulePath": "rednote/auth.js",
     "sourceFile": "rednote/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "rest-countries",
@@ -28351,7 +28392,8 @@
     "type": "js",
     "modulePath": "reuters/auth.js",
     "sourceFile": "reuters/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "rfc",
@@ -31496,7 +31538,8 @@
     "type": "js",
     "modulePath": "suno/auth.js",
     "sourceFile": "suno/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "taobao",
@@ -31731,7 +31774,8 @@
     "type": "js",
     "modulePath": "taobao/auth.js",
     "sourceFile": "taobao/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "tdx",
@@ -32527,7 +32571,8 @@
     "type": "js",
     "modulePath": "tiktok/auth.js",
     "sourceFile": "tiktok/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "toutiao",
@@ -32640,7 +32685,8 @@
     "type": "js",
     "modulePath": "toutiao/auth.js",
     "sourceFile": "toutiao/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "trae-cn",
@@ -36029,7 +36075,8 @@
     "type": "js",
     "modulePath": "upwork/auth.js",
     "sourceFile": "upwork/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "v2ex",
@@ -36392,7 +36439,8 @@
     "type": "js",
     "modulePath": "v2ex/auth.js",
     "sourceFile": "v2ex/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "wanfang",
@@ -36640,7 +36688,8 @@
     "type": "js",
     "modulePath": "wechat-channels/auth.js",
     "sourceFile": "wechat-channels/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "weibo",
@@ -37076,7 +37125,8 @@
     "type": "js",
     "modulePath": "weibo/auth.js",
     "sourceFile": "weibo/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "weixin",
@@ -37624,7 +37674,8 @@
     "type": "js",
     "modulePath": "weread/auth.js",
     "sourceFile": "weread/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "weread-official",
@@ -38735,7 +38786,8 @@
     "type": "js",
     "modulePath": "xianyu/auth.js",
     "sourceFile": "xianyu/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "xiaoe",
@@ -38923,6 +38975,54 @@
     "type": "js",
     "modulePath": "xiaoe/auth.js",
     "sourceFile": "xiaoe/auth.js",
+    "navigateBefore": false,
+    "siteSession": "persistent"
+  },
+  {
+    "site": "xiaohongshu",
+    "name": "ask",
+    "description": "Ask 小红书点点 and return the answer with citation sources.",
+    "access": "write",
+    "domain": "www.xiaohongshu.com",
+    "strategy": "cookie",
+    "browser": true,
+    "args": [
+      {
+        "name": "query",
+        "type": "str",
+        "required": true,
+        "positional": true,
+        "help": "Question for 点点"
+      },
+      {
+        "name": "timeout",
+        "type": "int",
+        "default": 90,
+        "required": false,
+        "help": "Seconds to wait for the 点点 answer"
+      },
+      {
+        "name": "source-limit",
+        "type": "int",
+        "default": 10,
+        "required": false,
+        "help": "Maximum citation sources to return"
+      }
+    ],
+    "columns": [
+      "query",
+      "answer",
+      "source_count",
+      "source_total_text",
+      "sources_summary",
+      "sources",
+      "warning",
+      "message_id",
+      "conversation_id"
+    ],
+    "type": "js",
+    "modulePath": "xiaohongshu/ask.js",
+    "sourceFile": "xiaohongshu/ask.js",
     "navigateBefore": false
   },
   {
@@ -39501,17 +39601,17 @@
     "browser": true,
     "args": [
       {
-        "name": "title",
-        "type": "str",
-        "required": true,
-        "help": "笔记标题 (最多20字)"
-      },
-      {
         "name": "content",
         "type": "str",
         "required": true,
         "positional": true,
         "help": "笔记正文"
+      },
+      {
+        "name": "title",
+        "type": "str",
+        "required": true,
+        "help": "笔记标题 (最多20字)"
       },
       {
         "name": "images",
@@ -40281,7 +40381,8 @@
     "type": "js",
     "modulePath": "xueqiu/auth.js",
     "sourceFile": "xueqiu/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "yahoo",
@@ -41492,7 +41593,8 @@
     "type": "js",
     "modulePath": "youtube/auth.js",
     "sourceFile": "youtube/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "yuanbao",
@@ -41745,7 +41847,8 @@
     "type": "js",
     "modulePath": "yuanbao/auth.js",
     "sourceFile": "yuanbao/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "zhihu",
@@ -42381,7 +42484,8 @@
     "type": "js",
     "modulePath": "zhihu/auth.js",
     "sourceFile": "zhihu/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   },
   {
     "site": "zlibrary",
@@ -42685,6 +42789,7 @@
     "type": "js",
     "modulePath": "zsxq/auth.js",
     "sourceFile": "zsxq/auth.js",
-    "navigateBefore": false
+    "navigateBefore": false,
+    "siteSession": "persistent"
   }
 ]
